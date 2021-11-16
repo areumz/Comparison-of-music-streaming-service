@@ -49,6 +49,7 @@ body {
     background-color: #DCDCDC;
     font-size: 20px;
     font-weight: 700;
+    letter-spacing: 0.05em;
     color: #29465B;
 }
 
@@ -58,10 +59,80 @@ body {
     align-items: flex-end;
 }
 
+.navigation ul li:first-child {
+    display:block;
+    padding-top:5px;
+}
+
+.navigation ul li:last-child {
+    display:block;
+    padding-bottom:5px;
+}
+
 /* header */
 header h1 {
     font-weight: 700;
     display:block;
     margin-top:20px;
     margin-left:10px;
+}
+
+/* bookmark */
+.bookmark-div {
+    border: 5px solid #87AFC7;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.greeting {
+    font-size:18px;
+    color: #2B3856;
+}
+
+.fav {
+    font-size:20px;
+    font-weight:700;
+}
+
+/* service */
+.korea-service article,
+.foreign-service article {
+    border-radius: 20px;
+    background: #D1D8EC;
+    box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+    box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+}
+
+.korea-service article h1 {
+    text-align: center;
+}
+
+.melon,
+.genie,
+.flo,
+.bugs,
+.vibe,
+.applemusic,
+.spotify,
+.youtube {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.melon img,
+.genie img,
+.flo img,
+.bugs img,
+.applemusic img,
+.spotify img {
+    width:150px;
+}
+
+.vibe img {
+    width:180px;
+}
+
+.youtube img {
+    width:200px;
 }
