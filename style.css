@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+}
+
+/* Reset CSS */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-size: 16px;
+}
+
+button:focus,
+button:active 
+input:focus,
+input:active 
+textarea:focus,
+textarea:active {
+    outline: none;
+    box-shadow: none;
+}
+
+ul,
+ol,
+li {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left:0 ;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.33333;
+    color: #0C090A;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* navigation */
+.navigation {
+    background-color: #DCDCDC;
+    font-size: 20px;
+    font-weight: 700;
+    color: #29465B;
+}
+
+.navigation ul {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* header */
+header h1 {
+    font-weight: 700;
+    display:block;
+    margin-top:20px;
+    margin-left:10px;
+}
