@@ -9,8 +9,11 @@ const greetings = (hours) => {
     else if (hours>12 && hours<18) {
         times.innerText=`오후`;
     }
-    else {
+    else if (hours>17 && hours<21) {
         times.innerText=`저녁`;
+    }
+    else {
+        times.innerText=`밤`;
     }
 }
 
