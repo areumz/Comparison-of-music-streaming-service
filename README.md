@@ -1,2 +1,2 @@
-# Comparison-of-music-streaming-site
+# Comparison-of-music-streaming-service
 Personal Project
