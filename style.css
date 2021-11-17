@@ -93,16 +93,28 @@ header h1 {
     margin: 10px 0;
 }
 
+.fav strong {
+    font-size:25px;
+    margin-left:10px;
+    color: #C11B17;
+}
+
 /* service */
 .korea-service article,
 .foreign-service article {
     border-radius: 20px;
-    background-color: rgba(209,216,236,0.7);
+    background-color: rgba(209,216,236,0.4);
     box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
 }
 
 .korea-service article h1 {
     text-align: center;
+}
+
+.service-title {
+    display:block;
+    margin-top:20px;
+    margin-left:10px;
 }
 
 .melon,
@@ -115,23 +127,44 @@ header h1 {
 .youtube {
     display:flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    margin-left:10px;
+    margin-bottom: 20px;
+    width:280px;
+    height: 280px;
 }
 
-.melon img,
-.genie img,
-.flo img,
-.bugs img,
-.applemusic img,
-.spotify img {
+.melon p,
+.genie p,
+.flo p,
+.bugs p,
+.vibe p,
+.applemusic p,
+.spotify p,
+.youtube p {
+    text-align: center;
+}
+
+.melon,
+.applemusic {
+    margin-top: 30px;
+}
+
+.melon-logo,
+.genie-logo,
+.flo-logo,
+.bugs-logo,
+.applemusic-logo,
+.spotify-logo {
     width:150px;
 }
 
-.vibe img {
+.vibe-logo {
     width:180px;
 }
 
-.youtube img {
+.youtubemusic-logo {
     width:200px;
 }
 
@@ -139,3 +172,15 @@ header h1 {
     font-size:15px;
     color: lightslategray;
 }
+
+/* 실험중 */
+.heart {
+    width:30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.active {
+    background-color: pink;
+}
+
