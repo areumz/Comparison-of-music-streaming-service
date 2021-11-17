@@ -42,13 +42,73 @@ CSS 작업이나 유지 보수에 용이하도록 class명을 일관되게 주�
 
 ## 4. 디버깅
 
-### 4-2. 각종 디버깅
+### 4-1. 각종 디버깅
 <details>
-<summary>원격 저장소 연결 시 발생 오류</summary>
+<summary>화살표 함수 내 if문</summary>
 <div markdown="1">
 
-fatal : not a git repository <or any of the parent directories>: .git
-git init을 먼저 하고 원격 저장소 연결 해야함
+좋은, 입니다 만 미리 만들어 두고 시간대별로 중간에 다른 문구가 들어가도록 구현하려함
+기왕이면 ES6 문법을 사용하고싶어서 화살표 함수로 조건문을 만들었을 때
+시간대에 상관 없이 else 부분만 출력됨 (아래 코드)
+```
+const date = new Date();
+const hours = date.getHours();
+
+const greeting = () => {
+if  (hours > 6 && hours < 12) {
+    times.innerText = `아침`;
+}
+else if (hours > 12 && hours < 17) {
+    times.innerText = `오후`;
+ }
+ else if (hours > 17 && hours < 21) {
+    times.innerText = `저녁`;
+}
+    else {
+    times.innerText = `밤`;
+    }
+}
+```
+const를 let으로 바꿔도 보고, && 연산자가 문제인가 바꿔도 보고 return을 적어도 봤지만
+다 아니었음.
+hours는 콘솔로 찍어봤을 때 정상적인 값이 나옴
+
+```
+function greeting() {
+     if  (hours > 6 && hours <= 12) {
+         return times.innerText = `아침`;
+     }
+    else if (hours > 12 && hours <= 17) {
+         return times.innerText = `오후`;
+     }
+     else if (hours > 17 && hours < 21) {
+         return times.innerText = `저녁`;
+     }
+     else return times.innerText = `밤`;
+ }
+```
+이렇게 기존 함수 형태로 바꿨을 때는 무리 없이 잘 작동됨
+화살표 함수로는 if 문을 못 쓰는건지 구글링 해봤을 때 만족할만한 답을 얻지 못함
+
+```
+let greetings = () => {
+    if (hours > 6 && hours <= 12) {
+        times.innerText = `아침`;
+    }
+    else if (hours > 12  && hours <= 17) {
+        times.innerText = `오후`;
+    }
+    else if (hours > 17 && hours < 21) {
+        times.innerText = `저녁`;
+    }
+    else {
+        times.innerText = `밤`;
+    }
+}
+```
+이렇게 고치니 작동함.
+위에 hours라는 변수를 이미 선언했는데, 함수 내에 매개변수로 같은 이름을 전달하니
+충돌이 일어난듯 함
 
 </div>
 </details>
