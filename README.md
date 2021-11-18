@@ -51,6 +51,7 @@ CSS 작업이나 유지 보수에 용이하도록 class명을 일관되게 주�
 <div markdown="1">
 
 ```
+//alt값 가져오기
 function alts() {
      for (let i = 0; i <heart.length; i++) {
          console.log(heart[i].alt);
@@ -58,6 +59,7 @@ function alts() {
  }
  alts();
 
+//class에 따라 화면 렌더링
 let paints = document.querySelector(".paint");
 
 function clicker() {
@@ -75,19 +77,17 @@ clicker();
 ```
 
 </div>
-
-<details>
-
-각 서비스에 있는 하트 아이콘을 누르면 맨 위의 테두리 안에 해당 서비스의 이름이 나오도록 구현하고 싶었음.<br/>
-to do list를 해본적이 있으니 이와 비슷하게 하면 되지 않을까? 하고 생각함.
-<br/>
-그래서 아래와 같이 먼저 이미지의 alt 값에 해당 서비스의 이름을 적어두고, 그것을 가져오는 함수를 짠 뒤,<br/>
-toggle on이 되어 class 명이 추가 될 때마다 그것을 그려주면 되지 않을까 생각함.
-
 </details>
 
+- 각 서비스에 있는 하트 아이콘을 누르면 맨 위의 테두리 안에 해당 서비스의 이름이 나오도록 구현하고 싶었음
+- to do list를 해본적이 있으니 이와 비슷하게 하면 되지 않을까? 하고 생각함
+- 그래서 위와 같이 먼저 이미지의 alt 값에 해당 서비스의 이름을 적어두고, 그것을 가져오는 함수를 짠 뒤,<br/>
+toggle on이 되어 class 명이 추가 될 때마다 그것을 그려주면 되지 않을까 생각함.
+
+<details>
 <summary><b>개선된 코드</b></summary>
 <div markdown="1">
+
 ```
 //Bookmark 공통
 
@@ -117,17 +117,14 @@ function fnHandlerDocsmelon() {
 }
 observermelon.observe(elTargetmelon, objConfigmelon);
 ```
+
 </div>
 </details>
 
-<details>
-
-하지만 위의 코드로는 toggle로 변화하는 class의 상태를 실시간으로 반영하지 못함.<br/>
-구글링을 해서, 실시간으로 속성 변화 등을 감지해주는 MutationObserver를 써보면 어떨까 생각함.<br/>
-다행히 class 변경을 감지하긴 하지만, class를 포함한 전체 속성 변경에 대해 반응하는 것이라 on이 되었을 때 화면에 그려주지만 off가 되었을 때 화면에서 사라지지는 않음<br/>
+- 하지만 위의 코드로는 toggle로 변화하는 class의 상태를 실시간으로 반영하지 못함
+- 구글링을 해서, 실시간으로 속성 변화 등을 감지해주는 MutationObserver를 써보면 어떨까 생각함
+- 다행히 class 변경을 감지하긴 하지만, class를 포함한 전체 속성 변경에 대해 반응하는 것이라 on이 되었을 때 화면에 그려주지만 off가 되었을 때 화면에서 사라지지는 않음<br/>
 j query나 다양한 방법을 찾아봤지만, 아직 이 부분은 찾지 못하고 우선 처음 on이 되면 그것을 감지하여 화면에 나타나도록 구현함
-
-</details>
 
 </br>
 
@@ -137,9 +134,10 @@ j query나 다양한 방법을 찾아봤지만, 아직 이 부분은 찾지 못�
 <summary>화살표 함수 내 if문</summary>
 <div markdown="1">
 
-좋은, 입니다 만 미리 만들어 두고 시간대별로 중간에 다른 문구가 들어가도록 구현하려함
+- 좋은, 입니다 만 미리 만들어 두고 시간대별로 중간에 다른 문구가 들어가도록 구현하려함
 기왕이면 ES6 문법을 사용하고싶어서 화살표 함수로 조건문을 만들었을 때
 시간대에 상관 없이 else 부분만 출력됨 (아래 코드)
+
 ```
 const date = new Date();
 const hours = date.getHours();
@@ -159,9 +157,10 @@ else if (hours > 12 && hours < 17) {
     }
 }
 ```
-const를 let으로 바꿔도 보고, && 연산자가 문제인가 바꿔도 보고 return을 적어도 봤지만
-다 아니었음.
-hours는 콘솔로 찍어봤을 때 정상적인 값이 나옴
+
+- const를 let으로 바꿔도 보고, && 연산자가 문제인가 바꿔도 보고 return을 적어도 봤지만
+다 아니었음
+- hours는 콘솔로 찍어봤을 때 정상적인 값이 나옴
 
 ```
 function greeting() {
@@ -177,8 +176,9 @@ function greeting() {
      else return times.innerText = `밤`;
  }
 ```
-이렇게 기존 함수 형태로 바꿨을 때는 무리 없이 잘 작동됨
-화살표 함수로는 if 문을 못 쓰는건지 구글링 해봤을 때 만족할만한 답을 얻지 못함
+
+- 이렇게 기존 함수 형태로 바꿨을 때는 무리 없이 잘 작동됨
+- 화살표 함수로는 if 문을 못 쓰는건지 구글링 해봤을 때 만족할만한 답을 얻지 못함
 
 ```
 let greetings = () => {
@@ -196,8 +196,8 @@ let greetings = () => {
     }
 }
 ```
-이렇게 고치니 작동함.
-위에 hours라는 변수를 이미 선언했는데, 함수 내에 매개변수로 같은 이름을 전달하니
+- 이렇게 고치니 작동함
+- 위에 hours라는 변수를 이미 선언했는데, 함수 내에 매개변수로 같은 이름을 전달하니
 충돌이 일어난듯 함
 
 </div>
