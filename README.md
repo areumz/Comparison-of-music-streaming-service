@@ -6,7 +6,7 @@
 </br>
 
 ## 1. 제작 기간 & 참여 인원
-- 2021년 11월 16일 ~ ing
+- 2021년 11월 16일 ~ 11월 18일
 - 개인 프로젝트
 
 </br>
@@ -27,6 +27,10 @@
 ### 인삿말
 - 접속 시 현재 시간대를 기준하여 아침 / 오후 / 저녁이 바뀌며 인삿말이 나오도록 구현했습니다
 
+### Boomark
+- 각 서비스에 하트 아이콘을 누르면 해당 서비스의 이름이 화면에 나타나도록
+구현했습니다
+
 ### 반응형 웹페이지
 - 부트스트랩 그리드 시스템을 활용하여 레이아웃을 잡았습니다
 - 모바일 퍼스트로 작업하였고, 모바일 / 태블릿 / 데스크탑에서 반응하는 웹 페이지를 구현했습니다
@@ -41,8 +45,92 @@ CSS 작업이나 유지 보수에 용이하도록 class명을 일관되게 주�
 </br>
 
 ## 4. 디버깅
+### 4-1. 핵심 디버깅
+<details>
+<summary><b>기존 코드</b></summary>
+<div markdown="1">
+```
+function alts() {
+     for (let i = 0; i <heart.length; i++) {
+         console.log(heart[i].alt);
+     }
+ }
+ alts();
 
-### 4-1. 각종 디버깅
+let paints = document.querySelector(".paint");
+
+function clicker() {
+for (let i =0; i<heart.length; i++) {
+    if (heart[i].className === 'heart hticon') {
+        let plz = document.createElement('span');
+        let hi = document.createTextNode(heart[i].alt+'\n');
+        console.log(heart[i].alt);
+        plz.appendChild(hi);
+        paints.appendChild(plz);
+    }
+}
+}
+clicker();
+```
+</div>
+
+<details>
+
+각 서비스에 있는 하트 아이콘을 누르면 맨 위의 테두리 안에 해당 서비스의 이름이 나오도록 구현하고 싶었음.<br/>
+to do list를 해본적이 있으니 이와 비슷하게 하면 되지 않을까? 하고 생각함.
+<br/>
+그래서 아래와 같이 먼저 이미지의 alt 값에 해당 서비스의 이름을 적어두고, 그것을 가져오는 함수를 짠 뒤,<br/>
+toggle on이 되어 class 명이 추가 될 때마다 그것을 그려주면 되지 않을까 생각함.
+
+</details>
+
+<summary><b>개선된 코드</b></summary>
+<div markdown="1">
+```
+//Bookmark 공통
+
+const actives = document.querySelectorAll('.active');
+
+    for (let i =0; i< actives.length; i++) {
+        actives[i].classList.remove('active');
+        actives[i].addEventListener("click", () => {
+            actives[i].classList.toggle('active');
+        })
+        
+    }
+
+//Melon
+let paints = document.querySelector(".paint");
+let melons = document.getElementById('melon-id');
+let observermelon = new MutationObserver(fnHandlerDocsmelon),
+    elTargetmelon = melons,
+    objConfigmelon = {
+        childlist: false,
+        subtree: false,
+        attributes: true,
+        CharacterData: false
+    };
+function fnHandlerDocsmelon() {
+    paints.innerText = '　Melon';
+}
+observermelon.observe(elTargetmelon, objConfigmelon);
+```
+</div>
+</details>
+
+<details>
+
+하지만 위의 코드로는 toggle로 변화하는 class의 상태를 실시간으로 반영하지 못함.<br/>
+구글링을 해서, 실시간으로 속성 변화 등을 감지해주는 MutationObserver를 써보면 어떨까 생각함.<br/>
+다행히 class 변경을 감지하긴 하지만, class를 포함한 전체 속성 변경에 대해 반응하는 것이라 on이 되었을 때 화면에 그려주지만 off가 되었을 때 화면에서 사라지지는 않음<br/>
+j query나 다양한 방법을 찾아봤지만, 아직 이 부분은 찾지 못하고 우선 처음 on이 되면 그것을 감지하여 화면에 나타나도록 구현함
+
+</details>
+
+</br>
+
+
+### 4-2. 각종 디버깅
 <details>
 <summary>화살표 함수 내 if문</summary>
 <div markdown="1">
@@ -116,109 +204,18 @@ let greetings = () => {
 </br>
 
 <details>
-<summary>quotes(랜덤 명언).js 파일이 화면에 안 나타남</summary>
+<summary>for문 사용시 문제</summary>
 <div markdown="1">
 
-id가 quote인 div 의 span을 가져올 때
-document.getElementsbyId(“quote span:first-child”)로 가져오니 화면에 안 나타남
-
-const quote = document.querySelector("#quote span:first-child");
-const author = document.querySelector("#quote span:last-child");
-
-위와 같이 수정하니 작동함
-</div>
-</details>
-    
-</br>
-
-<details>
-<summary>.classlist.add 로 여러개 클래스 추가시 잘 안되는 문제</summary>
-<div markdown="1">
-
-000.classlist.add(“class1 class2”); 공백으로 구분하니 적용 안됨
-000.classlist.add(“class1”, “class2”); 로 해결
+사소한 실수인데, for문 사용시에 return 써버려서 첫 줄만 작동하고 끝나버림<br/>
+return을 삭제하여 해결
 
 </div>
 </details>
     
 </br>
-
-<details>
-<summary>D-day가 화면에 출력 안 되는 문제</summary>
-<div markdown="1">
-
-const dday = document.querySelector("#xmasdday span:first-child");
-const hms = document.querySelector("#xmasdday span:last-child");
-
-▼기존 코드
-function ddayCounter() {
-    const dday = new Date("Dec 25,2021,00:00:00").getTime();
-
-▼수정한 코드
-function ddayCounter() {
-    const xmas = new Date("2021-12-25T00:00:00+0900");
-    const now = new Date();
-    const distance = xmas.getTime() - now.getTime();
-
-날짜 표시 방식을 수정하고 getTime을 밑으로 내리니 해결이 됨.
-이 부분에 대해서는 왜 그런지 더 고민해봐야할듯함.
-
-</div>
-</details>
-    
-</br>
-
-<details>
-<summary>dday라는 변수가 두 개 있어서 생긴 문제</summary>
-<div markdown="1">
-
-HTML의 span 요소를 가져오는 변수와 함수 내 변수명이 동일해서 작동이 잘 안됨.
-ddayCounter 함수 안의 변수 xmas 로 변수명 바꿔주니 해결됨
-
-</div>
-</details>
-    
-</br>
-
-<details>
-<summary>dday counter가 제대로 안되는 문제</summary>
-<div markdown="1">
-
-    const day = Math.floor(distance / (1000 * 60 * 60 * 24));
-여기에 1000 부분을 10000으로 해서 날짜가 이상하게 나옴
-console.log(xmas, now, distance) 로 찍어보고 이상한 부분 발견함
-
-</div>
-</details>
-    
-</br>
-
-<details>
-<summary>padStart 적용 문제</summary>
-<div markdown="1">
-
-const hours = String(Math.floor((distance % (1000*60*60*24))/(1000*60*60))).padStart(2, "0");
-
-괄호를 잘못 사용해서 문제가 생겼음. String 적용은 Math부터 *60까지의 숫자에만 해야하는데, padStart까지 적용시켜서 제대로 작동 안함. 괄호 수정 후 제대로 작동함
-
-</div>
-</details>
-    
-</br>
-
-<details>
-<summary>todo list가 나타나지 않는 문제</summary>
-<div markdown="1">
-
-맨 처음 to do list를 만들 때는 form을 썼다가, 이번에는 입력폼에 css 애니메이션이 들어가서 div로 묶었었다. 그러니까 설치한 submit 이벤트가 전혀 안먹힘.
-form으로 바꾸니 해결
-
-</div>
-</details>
-    
-</br>
-
 
 ## 5. 회고 / 느낀점
->완료되면 적기
+> 이전까지 전체 레이아웃 잡는 것, 반응형 웹을 조금씩 연습해오다가 처음으로 제대로 완성을 해봤는데 시간이 많이 걸렸지만 전보다 HTML 마크업과 CSS 배치에 익숙해진 것 같아서 다행이었다. <br/>
+자바스크립트로 북마크되는 부분을 일부는 구현했지만, 완벽하게 구현하지는 못한 것이 조금 아쉽다.
 
