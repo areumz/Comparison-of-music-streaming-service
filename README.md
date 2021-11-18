@@ -49,6 +49,7 @@ CSS 작업이나 유지 보수에 용이하도록 class명을 일관되게 주�
 <details>
 <summary><b>기존 코드</b></summary>
 <div markdown="1">
+
 ```
 function alts() {
      for (let i = 0; i <heart.length; i++) {
@@ -72,6 +73,7 @@ for (let i =0; i<heart.length; i++) {
 }
 clicker();
 ```
+
 </div>
 
 <details>
