@@ -217,6 +217,18 @@ return을 삭제하여 해결
     
 </br>
 
+<details>
+<summary>document.querySelectorAll</summary>
+<div markdown="1">
+
+document.querySelectorAll을 담은 변수에 addEvenetListner를 달았을 때<br/>
+오류가 발생. for문과 변수[i] 뒤에 이벤트 설치하니 잘 작동함
+
+</div>
+</details>
+    
+</br>
+
 ## 5. 회고 / 느낀점
 > 이전까지 전체 레이아웃 잡는 것, 반응형 웹을 조금씩 연습해오다가 처음으로 제대로 완성을 해봤는데<br/>시간이 많이 걸렸지만 전보다 HTML 마크업과 CSS 배치에<br/>익숙해진 것 같아서 다행이었다. <br/>
 자바스크립트로 북마크되는 부분을 일부는 구현했지만, 완벽하게 구현하지는 못한 것이 조금 아쉽다.
