@@ -1,7 +1,7 @@
 # :pushpin: 음원 스트리밍 서비스 비교
 >국내, 외 다양한 음원 스트리밍 서비스를 한 눈에 비교해보는 웹페이지입니다
 
->https://irrpl-ar.github.io/Comparison-of-music-streaming-service/
+>https://areumz.io/Comparison-of-music-streaming-service/
 
 </br>
 
