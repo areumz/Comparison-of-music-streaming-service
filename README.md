@@ -184,13 +184,13 @@ let greetings = () => {
     
 </br>
 
-**for문 사용시 문제**
+**for문 사용시 문제**.  
 사소한 실수인데, for문 사용시에 return 써버려서 첫 줄만 작동하고 끝나버림<br/>
 return을 삭제하여 해결
     
 </br>
 
-**document.querySelectorAll**
+**document.querySelectorAll**.  
 
 document.querySelectorAll을 담은 변수에 addEvenetListner를 달았을 때<br/>
 오류가 발생. 노드 리스트 형태로 담겨서 배열은 아니지만 유사 배열이라<br/>
