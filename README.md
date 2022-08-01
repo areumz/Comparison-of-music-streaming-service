@@ -190,8 +190,7 @@ return을 삭제하여 해결
     
 </br>
 
-**document.querySelectorAll**.  
-
+**document.querySelectorAll**  
 document.querySelectorAll을 담은 변수에 addEvenetListner를 달았을 때<br/>
 오류가 발생. 노드 리스트 형태로 담겨서 배열은 아니지만 유사 배열이라<br/>
 발생한 오류. for문과 변수[i] 뒤에 이벤트 설치하니 잘 작동함
